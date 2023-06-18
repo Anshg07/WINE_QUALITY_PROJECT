@@ -5,24 +5,6 @@ import joblib
 # Load the pre-trained model
 model = joblib.load('wine_quality_model.pkl')
 
-# Function to preprocess the input data
-def preprocess_input(data):
-    # Perform any necessary data preprocessing steps
-    # e.g., scaling, encoding categorical variables, etc.
-    # Return the preprocessed data as a DataFrame or numpy array
-    processed_data = data  # Placeholder for preprocessing steps
-    return processed_data
-
-# Function to make predictions
-def predict_quality(data):
-    # Preprocess the input data
-    processed_data = preprocess_input(data)
-    
-    # Make predictions using the pre-trained model
-    predictions = model.predict(processed_data)
-    
-    return predictions
-
 # Define the Streamlit app
 def main():
     # Set app title and description
@@ -63,7 +45,7 @@ def main():
         input_df = pd.DataFrame([input_data])
         
         # Make predictions
-        predictions = predict_quality(input_df)
+        predictions = model.predict(input_df)
         
         # Display the predicted quality
         st.subheader("Predicted Wine Quality")
@@ -72,7 +54,29 @@ def main():
             st.write("THIS IS A BAD QUALITY WINE")
         else:
             st.write('THIS IS A GOOD QUALITY WINE!! ENJOYYYY!')
-        st.write(predictions[0])
+
+# CSS style to animate the color-changing text
+color_change_style = """
+    <style>
+    .color-change {
+        animation: color_change_animation 3s infinite;
+    }
+
+    @keyframes color_change_animation {
+        0% { color: red; }
+        25% { color: blue; }
+        50% { color: green; }
+        75% { color: orange; }
+        100% { color: purple; }
+    }
+    </style>
+"""
+
+# Display the color-changing text
+st.markdown(color_change_style, unsafe_allow_html=True)
+st.markdown("""<h2> Designed BY <b class='color-change'>ANSH GUPTA</b></h2>
+            
+            """, unsafe_allow_html=True)
 
 # Run the app
 if __name__ == '__main__':
