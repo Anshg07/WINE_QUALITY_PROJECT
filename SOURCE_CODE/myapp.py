@@ -8,7 +8,9 @@ model = joblib.load('wine_quality_model.pkl')
 # Define the Streamlit app
 def main():
     # Set app title and description
-    st.title("Wine Quality Prediction")
+    st.markdown(color_change_style, unsafe_allow_html=True)
+    st.markdown("""<h2 align = 'center' > Designed By <b class='color-change'>ANSH GUPTA</b></h2>""", unsafe_allow_html=True)
+    st.markdown("""<h1 align = 'center' > " WINE QUALITY PREDICTION " </h1>""", unsafe_allow_html=True)
     st.write("This app predicts the quality of wine based on input features.")
     
     # Create input fields for the wine features
@@ -63,20 +65,15 @@ color_change_style = """
     }
 
     @keyframes color_change_animation {
-        0% { color: red; }
-        25% { color: blue; }
-        50% { color: green; }
-        75% { color: orange; }
-        100% { color: purple; }
-    }
+        0% { color: #f2a4a8; }   /* Soft Pink */
+        25% { color: #a6c8d2; }  /* Soft Blue */
+        50% { color: #bdd4e7; }  /* Soft Lavender */
+        75% { color: #e7c3a4; }  /* Soft Peach */
+        100% { color: #d8ccd8; } /* Soft Gray */
+        
     </style>
 """
 
-# Display the color-changing text
-st.markdown(color_change_style, unsafe_allow_html=True)
-st.markdown("""<h2> Designed BY <b class='color-change'>ANSH GUPTA</b></h2>
-            
-            """, unsafe_allow_html=True)
 
 # Run the app
 if __name__ == '__main__':
